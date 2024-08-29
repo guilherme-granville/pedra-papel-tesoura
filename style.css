@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #8BC6EC, #9599E2);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    padding: 2rem;
+}
+
+.screen {
+    display: grid;
+    border: 0.4rem solid #fff;
+    border-radius: 2rem;
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    column-gap: 10rem;
+    row-gap: 2rem;
+    grid-template-areas: 
+    ". ."
+    "player robot"
+    "result result"
+    ". ."
+    ;
+    max-width: 100%;
+    width: 80rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.player-side {
+    width: auto;
+    grid-area: player;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+}
+
+.robot-side {
+    width: auto;
+    grid-area: robot;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+}
+
+.result-footer {
+    grid-area: result;
+}
+
+
+#icon {
+    width: 10rem;
+}
+
+
+
+#option {
+    width: 7rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 0.2rem solid transparent;
+}
+
+.rock:hover, .scissors:hover, .paper:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    border-color: #007bff;
+}
+
+#option:active {
+    transform: translateY(0);
+}
+
+
+
+.robot-rock, .robot-paper, .robot-scissors {
+    display: none; /* Inicialmente escondido */
+}
+
+#player-points, #robot-points {
+    font-size: 3.5rem;
+    color: #007bff;
+    font-weight: 700;
+    text-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.15);
+}
+
+.result {
+    text-align: center;
+    font-size: 2rem;
+    color: #ff5722;
+    font-weight: 700;
+    text-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.15);
+    min-height: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.options, .robot-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    border: 0.2rem solid #444;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    align-items: center;
+}
+
+.robot-options {
+    border-color: #dc3545;
+}
+
+.preda{
+    opacity: 0;
+}
+
+.robot-options img {
+    width: 6rem;
+    height: auto;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.robot-options img.show {
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .screen {
+        grid-template-areas: 
+        "player player"
+        "robot robot"
+        "result result";
+        gap: 2rem;
+        padding: 2rem;
+        width: 90%;
+    }
+
+    #icon {
+        width: 10rem;
+    }
+
+    #option {
+        width: 6rem;
+    }
+
+    #player-points, #robot-points, .result {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .screen {
+        grid-template-areas: 
+        "player"
+        "robot"
+        "result";
+        gap: 2rem;
+        padding: 2rem;
+        width: 100%;
+    }
+
+    #icon {
+        width: 9rem;
+    }
+
+
+    #option {
+        width: 4rem;
+    }
+
+    #player-points, #robot-points{
+        font-size: 2.5rem;
+    }
+    .result{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .screen {
+        grid-template-areas: 
+        "player robot"
+        "result result";
+        gap: 1.5rem;
+        padding: 1.5rem;
+        width: 100%;
+    }
+
+    #icon {
+        width: 4rem;
+    }
+
+    #option {
+        width: 2.5rem;
+    }
+
+    .result{
+        font-size: 1.3rem;
+    }
+
+    #player-points, #robot-points {
+        font-size: 2rem;
+    }
+
+    .options, .robot-options {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+}
